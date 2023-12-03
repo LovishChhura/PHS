@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}Health Score{% endblock title %}
+{% block style %}
+<style>
+/* Remove up and down arrows from number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+</style>
+{% endblock style %}
+{% block body %}
+
+<!-- hero section starts here -->
+<section class="bs-main bg-color hero-section mt-0">
+    <div class="container formy">
+        <div class="row mt-0 mb-5 pt-2 pb-5 gy-3">
+            <div class="col-12 col-md-6 col-lg-6">
+                <form id="health_form" method="post" action="/health_score/health_index">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="tempF">Body Temperature:</label>
+                        <input type="number" step="0.01" class="form-control" id="tempF" name="tempF" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pulse">Body Pulse:</label>
+                        <input type="number" step="0.01" class="form-control" id="pulse" name="pulse" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="respr">Respiration Rate:</label>
+                        <input type="number" step="0.01" class="form-control" id="respr" name="respr" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bpsys">Bystolic BP:</label>
+                        <input type="number" step="0.01" class="form-control" id="bpsys" name="bpsys" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bpdia">Diastolic BP:</label>
+                        <input type="number" step="0.01" class="form-control" id="bpdia" name="bpdia" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="popct">Body Oxygen:</label>
+                        <input type="number" step="0.01" class="form-control" id="popct" name="popct" aria-describedby="emailHelp"
+                            required>
+                        <small id="emailHelp" class="form-text text-muted">Disclaimer: This AI model provides general information and should not be considered a substitute for professional advice; use it at your own discretion.</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                        onclick="submitForm()">Submit</button>
+                </form>
+            </div>
+
+
+            <div class="col-12 col-md-6 col-lg-6 ">
+                <div class="container score_box mx-5 px-2 py-2"
+                    style="border: 2px solid #000; border-radius: 5px; background-color: var(--bs-main-color);">
+                    {% if score == 0 %}
+                    <h5>Your Health Score: <b>3</b></h5>
+                    <p>Health status: <u style="color: green;">{{status}}</u></p>
+                    {% elif myvar == 1 %}
+                    <h5>Your Health Score: <b>2</b></h5>
+                    <p>Health status: <u style="color: yellow;">{{status}}</u></p>
+                    {% elif myvar == 2 %}
+                    <h5>Your Health Score: <b>1</b></h5>
+                    <p>Health status: <u style="color: orange;">{{status}}</u></p>
+                    {% elif myvar == 3 %}
+                    <h5>Your Health Score: <b>0</b></h5>
+                    <p>Health status: <u style="color: red;">{{status}}</u></p>
+                    {% else %}
+                    <h5>Your Health Score: </h5>
+                    <p>Health status: <u style="color: red;">{{status}}</u></p>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- hero section end here -->
+
+<!--Modal starts here-->
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Ends here -->
+
+
+<script>
+    function submitForm() {
+        // Here you can add the logic to handle form submission
+        // For this example, we'll just show the success modal
+        $('#exampleModal').modal('show');
+    }
+</script>
+
+{% endblock body %}

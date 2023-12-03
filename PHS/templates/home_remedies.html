@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}PHS Exercises{% endblock title %}
+
+{% block body %}
+
+    <!-- PHS Exercises starts here -->
+    <section class=" services-section head">
+        <div class="container text-center common-title fw-bold pt-2">
+            <h2 class="common-heading">PHS Home Remedies</h2>
+            <hr class="w-25 mx-auto ">
+        </div>
+
+
+
+    </section>
+    <!-- PHS Exercises end here -->
+    <!--Beginner Level section section starts here-->
+
+    <section class=" services-section beginnery">
+        <div class="container text-center common-title fw-bold pt-2">
+            <h4 class="common-heading">{{name}}</h4>
+            <hr class="w-25 mx-auto ">
+        </div>
+
+        <div class="container mt-5">
+            <div class="row mt-0 mb-5 pt-2 pb-5 gy-3">
+                <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card text-center cardy" style="width: 18rem;">
+                            <img src="{{image}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <!-- <h5 class="card-title">Card title</h5> -->
+                                <p class="card-title  mb-3 ">{{name}}</p>
+                            </div>
+                        </div>
+                </div>
+
+
+                <div class="col-12 col-md-6 col-lg-9 hrem">
+                    <h5 class="hremt">1. {{Remedy1}}</h5><br>
+                    <p>{{Remedy1Detail}}</p><hr/>
+                    <h5 class="hremt">2. {{Remedy2}}</h5><br>
+                    <p>{{Remedy2Detail}}</p><hr/>
+                    <h5 class="hremt">3. {{Remedy3}}</h5><br>
+                    <p>{{Remedy3Detail}}</p><hr/>
+                    <h5 class="hremt">4. {{Remedy4}}</h5><br>
+                    <p>{{Remedy4Detail}}</p><hr/>
+                    <h5 class="hremt">5. {{Remedy5}}</h5><br>
+                    <p>{{Remedy5Detail}}</p>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+    <!-- Beginner Level ends here -->
+
+
+    {% endblock body %}

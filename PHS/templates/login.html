@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/auth.css">
+<link rel="stylesheet" href="/static/css/user-style.css">
+{% endblock css %}
+{% block body %}
+
+
+<!-- hero section starts here -->
+<section class="bs-main bg-color hero-section mt-0">
+    <div class="container formy">
+        <div class="row mt-0 mb-5 pt-2 pb-5 gy-3">
+            <div class="col-12 col-md-6 col-lg-11">
+                <div class="wrapper">
+                    <div class="form signup">
+                        <header>Signup</header>
+                        <form id="user_signup" action="/register/" method="POST">
+                            {% csrf_token %}
+                            {% if from == "signup" %}
+                            {%if info == "success" %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{message}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                            {%else%}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                            {%endif%}
+                            {% endif %}
+                            <input type="text" placeholder="Full name" id="full_name" name="full_name" required />
+                            <input type="text" placeholder="Username" id="usernameS" name="usernameS" required />
+                            <input type="password" placeholder="Password" id="passwordS" name="passwordS" required />
+                            <div class="checkbox">
+                                <input type="checkbox" id="signupCheck" />
+                                <label for="signupCheck">I accept all terms & conditions</label>
+                            </div>
+                            <input type="submit" value="Signup" />
+                        </form>
+                    </div>
+                    <div class="form login">
+                        <header>Login</header>
+                        <form id="user_login" action="/login/" method="POST">
+                            {% csrf_token %}
+                            {% if from == "login" %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                            {% endif %}
+                            <input type="text" placeholder="Username" id="usernameL" name="usernameL" required />
+                            <input type="password" placeholder="Password" id="passwordL" name="passwordL" required />
+                            <a href="#">Forgot password?</a>
+                            <input type="submit" value="Login" />
+                        </form>
+                    </div>
+                    {% comment %} <h3>{{from}}</h3> {% endcomment %}
+                    {{ from|json_script:"hello-data" }}
+                    <script>
+                        // {% comment %} console.log('from 1 ', hello-data) {% endcomment %}
+                        const data = JSON.parse(document.getElementById('hello-data').textContent);
+                        const wrapper = document.querySelector(".wrapper"),
+                            signupHeader = document.querySelector(".signup header"),
+                            loginHeader = document.querySelector(".login header");
+                        loginHeader.addEventListener("click", () => {
+                            wrapper.classList.add("active");
+                        });
+                        signupHeader.addEventListener("click", () => {
+                            wrapper.classList.remove("active");
+                        });
+                        // console.log('data ', data)
+                        if (data == 'login') {
+                            wrapper.classList.add("active");
+                        }
+                        if (data == 'signup') {
+                            wrapper.classList.remove("active");
+                        }
+
+                    </script>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-1">
+                <img src="/static/media/auth/pexels-antoni-shkraba-5215024HD.png" width="400px" height="580px">
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- hero section end here -->
+
+
+{% endblock body %}

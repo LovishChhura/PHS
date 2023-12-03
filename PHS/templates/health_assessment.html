@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+{% block title %}Health Assessment{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/features.css">
+<link rel="stylesheet" href="/static/css/user-style.css">
+{% endblock css %}
+{% block style %}
+<style>
+    /* Remove up and down arrows from number input */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
+{% endblock style %}
+{% block body %}
+
+<!-- PHS Exercises starts here -->
+<section class=" services-section head">
+    <div class="container text-center common-title fw-bold pt-2">
+        <h2 class="common-heading">PHS Health Assessment</h2>
+        <hr class="w-25 mx-auto ">
+    </div>
+
+
+
+</section>
+<!-- PHS Exercises end here -->
+
+<!-- bmi section starts here -->
+
+<section class="common-section mb-5 pt-5 bg-color">
+    <div class="container text-center common-title  ">
+        <h2 class="common-heading text-dark">BMI Calculator</h2>
+        <hr class="w-25 mx-auto">
+    </div>
+
+
+    <div class="container">
+        <div class="row mt-0 mb-5 pt-2 pb-5 gy-3">
+            <div class="col-12 col-md-6 col-lg-6">
+                <form id="bmi_form" action="/health_assessments/bmi" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Height (cms)</label>
+                        <input type="number" step="0.01" class="form-control" id="height" name="height" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Weight (kgs)</label>
+                        <input type="number" step="0.01" class="form-control" id="weight" name="weight"
+                            aria-describedby="emailHelp" required>
+                        <div id="emailHelp" class="form-text">Please provide input in numeric form only.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary sbtn">Submit</button>
+                </form>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-6 ">
+                <div class="container score_box mx-md-5 px-2 py-2 text-center"
+                    style="border: 2px solid #000; border-radius: 5px; background-color: var(--bs-main-color);">
+                    <h5>Your BMI Score: <b>{{score}}</b></h5>
+                    {% if Fscore < 16 %} <p>BMI status: <u style="color: red;">{{statusB}}</u></p>
+                        {% elif Fscore >= 16 and Fscore < 17 %} <p>BMI status: <u style="color: orange;">{{statusB}}</u>
+                            </p>
+                            {% elif Fscore >= 17 and Fscore < 18.5 %} <p>BMI status: <u
+                                    style="color: yellow;">{{statusB}}</u></p>
+                                {% elif Fscore >= 18.5 and Fscore < 25 %} <p>BMI status: <u
+                                        style="color: green;">{{statusB}}</u></p>
+                                    {% elif Fscore >= 25 and Fscore < 30 %} <p>BMI status: <u
+                                            style="color: yellow;">{{statusB}}</u></p>
+                                        {% elif Fscore >= 30 and Fscore < 35 %} <p>BMI status: <u
+                                                style="color: orange;">{{statusB}}</u></p>
+                                            {% elif Fscore >= 35 and Fscore < 40 %} <p>BMI status: <u
+                                                    style="color: red;">{{statusB}}</u></p>
+                                                {% elif Fscore >= 40 %}
+                                                <p>BMI status: <u style="color: red;">{{statusB}}</u></p>
+                                                {% else %}
+                                                <p>BMI status: <u style="color: green;">{{statusB}}</u></p>
+                                                {% endif %}
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<!-- bmi section end here -->
+
+<!-- Blood Sugar Test section starts here  -->
+
+<section class="common-section mb-5 pt-5 bg-color yog-bg pb-5" id="bloodsugar">
+    <div class="container text-center common-title  ">
+        <h2 class="common-heading text-dark">Blood Sugar Test</h2>
+        <hr class="w-25 mx-auto">
+    </div>
+
+    <div class="container">
+        <div class="row mt-0 mb-5 pt-2 pb-5 gy-3">
+            <div class="col-12 col-md-6 col-lg-6">
+                <form id="mg-dl_form" action="/health_assessments/gr1" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Glucometer Readings (mg/dL)</label>
+                        <input type="text" class="form-control" id="mgdlGR" name="mgdlGR" aria-describedby="emailHelp"
+                            required>
+                        <div id="emailHelp" class="form-text">Please provide input in numeric form only.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary sbtn">Submit</button>
+                </form>
+            </div>
+
+            {% comment %} <div class="col-12 col-md-6 col-lg-4">
+                <form id="mmol-l_form" action="/health_assessments/gr2" method="POST">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Glucometer Readings (mmol/L)</label>
+                        <input type="text" class="form-control" id="mmollGR" name="mmollGR" aria-describedby="emailHelp"
+                            required>
+                        <div id="emailHelp" class="form-text">Please provide input in numeric form only.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary sbtn">Submit</button>
+                </form>
+            </div> {% endcomment %}
+
+            <div class="col-12 col-md-6 col-lg-6 ">
+                <div class="container score_box mx-md-5 px-2 py-2 text-center"
+                    style="border: 2px solid #000; border-radius: 5px; background-color: var(--bs-main-color);">
+                    {% if level < 140 %}
+                    <h5>Diabetes status: <b><u style="color: green;">{{status1}}</u></b></h5>
+                    {% elif level >= 140 and level < 199 %}
+                    <h5>Diabetes status: <b><u style="color: orange;">{{status1}}</u></b></h5>
+                    {% elif level >= 200 %}
+                    <h5>Diabetes status: <b><u style="color: red;">{{status1}}</u></b></h5>
+                    {% else %}
+                    <h5>Diabetes status: <b><u style="color: green;">{{status1}}</u></b></h5>
+                    {% endif %}
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<!-- Blood Sugar Test section ends here  -->
+
+<!-- Eyes Test section starts here -->
+
+<section class="common-section mb-5 pt-5 bg-color">
+    <div class="container text-center common-title  ">
+        <h2 class="common-heading text-dark">Eyes Test for You</h2>
+        <hr class="w-25 mx-auto">
+    </div>
+
+
+    <div class="container">
+        <div class="row mt-0 mb-5 pt-2 pb-5 gy-3">
+            <div class="col-12 col-md-6 col-lg-4">
+                <h4>Test can be performed with or without glasses.</h4>
+                <p>In order for the test to be performed correctly, allow the following distance between subject and
+                    screen:</p>
+                <ul>
+                    <li>7 feet from a 20” screen;</li>
+                    <li>5 feet from a 17” screen;</li>
+                    <li>3 feet from a 12” screen;</li>
+                    <li>2 feet from a 13” screen.</li>
+                </ul>
+                <p>Cover left eye with your left hand, ensure to avoid applying pressure to the eyelid. Read the
+                    letters on the screen beginning at the top. Once completed, repeat with the right eye.</p>
+            </div>
+            <div class="col-12 col-md-6 col-lg-8">
+                <img src="/static/media/features/Free Online Eye Test_ Test Your Eye Vision Today.jpeg" class="eye_img">
+            </div>
+            <div class="col-12 col-md-6 col-lg-12">
+                <p>If you were able to read as easily with both the left and right eye, chances are you have a
+                    strong central visual acuity. If you are unable to read all the lines, you definitely have
+                    vision problems. A comprehensive exam, performed by an optometrist is required. </p>
+                <p>COURTESY: <i><a href="https://www.optoplus.com/en/eye-health/virtual-eye-test/online-eye-test/"
+                            target="_blank">OptoPlus</a></i></b> </p><br />
+                <p><b>The tests that we propose do not have a medical value and we remind you that only your
+                        optometrist can give a proper diagnostic.</b></p>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<!-- Eyes Test section end here -->
+
+{% endblock body %}

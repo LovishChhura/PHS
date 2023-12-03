@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %} | PHS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/user-style.css">
+    {% block css %}{% endblock css %}
+    {% block style %}{% endblock style %}
+</head>
+
+<body>
+
+    {%if request.user.is_authenticated %}
+    <!-- Adding User navbar here -->
+    <nav class="navo navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><b>PHS</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/health_score">Health Score</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/#exercise" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Exercises
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/exercise/exercise/chest/">Chest</a></li>
+                            <li><a class="dropdown-item" href="/exercise/exercise/biceps/">Biceps</a></li>
+                            <li><a class="dropdown-item" href="/exercise/exercise/triceps/">Triceps</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/exercise/exercise/shoulders/">Shoulders</a></li>
+                            <li><a class="dropdown-item" href="/exercise/exercise/back/">Back</a></li>
+                            <li><a class="dropdown-item" href="/exercise/exercise/legs/">Legs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/#yoga" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Yoga Asanas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/yoga/yoga/standing_pose/">Standing Asanas</a></li>
+                            <li><a class="dropdown-item" href="/yoga/yoga/sitting_pose/">Sitting Asanas</a></li>
+                            <li><a class="dropdown-item" href="/yoga/yoga/stomach_pose/">Laying_on_Stomach Asanas</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/yoga/yoga/back_pose/">Laying_on_Back Asanas</a></li>
+                            <li><a class="dropdown-item" href="/yoga/yoga/balancing_pose/">Balancing Asanas</a></li>
+                            <li><a class="dropdown-item" href="/yoga/yoga/eyes/">Eyes Asanas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/#home_remedies" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Home Remedies
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/home_remedies/home_remedies/common_cold/">Common
+                                    Cold</a></li>
+                            <li><a class="dropdown-item" href="/home_remedies/home_remedies/headache/">Headache</a></li>
+                            <li><a class="dropdown-item" href="/home_remedies/home_remedies/obesity/">Obesity</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/home_remedies/home_remedies/kidney_stone/">Kidney
+                                    Stone</a></li>
+                            <li><a class="dropdown-item" href="/home_remedies/home_remedies/stomach_pain/">Stomach
+                                    Pain</a></li>
+                            <li><a class="dropdown-item" href="/home_remedies/home_remedies/muscle_ache/">Muscle
+                                    Ache</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/home_remedies/home_remedies/cough/">Cough</a></li>
+                            <li><a class="dropdown-item" href="/home_remedies/home_remedies/nausea/">Nausea</a></li>
+                            <li><a class="dropdown-item" href="/home_remedies/home_remedies/malaria/">Malaria</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/reduce_stress">Reduce Stress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/health_guidelines">Health Guidelines</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/health_assessments">Health Assessments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/diet_plan">Diet Plan</a>
+                    </li>
+
+
+
+                </ul>
+                <span class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{request.user.first_name}}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <!-- <li><a class="dropdown-item" href="/">Profile</a></li>
+                        <li><a class="dropdown-item" href="/">Account Setting</a></li> -->
+                        <li><a class="dropdown-item" href="/logout/">Log Out</a></li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </nav>
+    <!-- User navbar ends here -->
+    {%else%}
+    <!-- Adding Home navbar here -->
+    <nav class="navo navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><b>PHS</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Personalized Health System</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Features
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/#healthScoreH">Health Score</a></li>
+                            <li><a class="dropdown-item" href="/#exercisesH">Exercises</a></li>
+                            <li><a class="dropdown-item" href="/#yogaH">Yoga Asanas</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/#homeRemediesH">Home Remedies</a></li>
+                            <li><a class="dropdown-item" href="/#reduceStressH">Reduce Stress</a></li>
+                            <li><a class="dropdown-item" href="/#healthGuidelinesH">Health Guidelines</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li> -->
+
+
+
+
+                </ul>
+                <a href="/login/" style="text-decoration: none;">
+                    <button class="btn btn-outline-primary" type="submit">Get Started</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!--Home  navbar ends here -->
+    {%endif%}
+
+    {% block body %} {% endblock body %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

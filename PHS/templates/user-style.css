@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Lexend+Deca:wght@100;200;300;400;500;600;700&family=Montserrat:wght@400;700&family=Mulish:wght@300&family=Poppins:wght@300;400;600&family=Urbanist:wght@300;400;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: "Urbanist", sans-serif;
+}
+
+:root {
+    --bs-dark-color: #1a1d20;
+    --bs-dark-primary: #1c1c1c;
+    --bs-main-color: #fff;
+    --bs-primary-color: #c6c6c6;
+    --secondary-color: #29a9fd;
+    --bs-supporting-color: #C850C0;
+
+    --bs-bgcolor: #4070f4;
+    --bs-bgcolor2: #D0F4FD;
+}
+
+/* Navbar */
+.navo {
+    background-color: var(--bs-main-color);
+}
+
+/* .navoli {
+    position: absolute;
+    right: 0%;
+    padding-right: 10px;
+    margin-right: 10px;
+} */
+
+.dropdown-menu {
+    width: auto;
+    /* or specify a fixed width in pixels */
+    white-space: normal;
+    max-width: none;
+}
+
+/*activity section*/
+
+
+.hero-section {
+    background-color: var(--bs-bgcolor2);
+}
+
+.hero-section .container {
+    display: grid;
+    place-items: center;
+    height: inherit;
+}
+
+/*exercise section*/
+.cardy {
+    background-color: var(--bs-bgcolor2);
+}
+
+.left_arrow {
+    position: relative;
+    background-color: #1a1d20;
+    left: -30%;
+}
+
+.right_arrow {
+    position: relative;
+    background-color: #1a1d20;
+    right: -30%;
+}
+
+/* yoga section */
+.white_cardy {
+    background-color: #FFFFFF;
+}
+
+.yog-bg {
+    background-color: var(--bs-bgcolor2);
+}
+
+
+
+/*health check*/
+.formy {
+    /* display: flex;*/
+    justify-content: flex-start;
+    align-items: start;
+    display: grid;
+    place-items: left;
+    height: inherit;
+}
+.score_box{
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+/*Exercises*/
+
+.head {
+    background-color: var(--bs-bgcolor2);
+}
+
+.beginnery {
+    background-color: var(--bs-main-color);
+}
+
+.advancey {
+    background-color: var(--bs-bgcolor2);
+}
+
+/*Yoga Asanas*/
+.intermediatey {
+    background-color: var(--bs-bgcolor2);
+}
+
+.y_advancey {
+    background-color: var(--bs-main-color);
+}
+
+
+/* Home Remedies */
+
+.hrem {
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+h5.hremt {
+    text-align: center;
+}
+
+/*Health Guidelines*/

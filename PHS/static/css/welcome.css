@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Lexend+Deca:wght@100;200;300;400;500;600;700&family=Montserrat:wght@400;700&family=Mulish:wght@300&family=Poppins:wght@300;400;600&family=Urbanist:wght@300;400;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: "Urbanist", sans-serif;
+}
+
+:root {
+    --bs-dark-color: #1a1d20;
+    --bs-dark-primary: #1c1c1c;
+    --bs-main-color: #fff;
+    --bs-primary-color: #c6c6c6;
+    --secondary-color: #29a9fd;
+    --bs-supporting-color: #C850C0;
+
+    --bs-bgcolor: #4070f4;
+    --bs-bgcolor2: #D0F4FD;
+}
+
+.hero-cont{
+    border-radius: 10px;
+}
+
+.getstart{
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 56px;
+    font-size: 20px;
+}
+
+/* Practices section */
+p.prac{
+    font-size: 1.5rem;
+}
+
+.titlep{
+    padding-left: 2px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.descp{
+    padding-left: 2px;
+    font-size: 1.2em;
+}
+
+
+/* choose */
+.ctitle{
+    font-size: 2rem;
+}
+/*exercise*/
+.htitle{
+    font-size: 3rem;
+    font-weight: 700;
+}
+.hdesc{
+    font-size: 1.2em;
+}
+
+/* footer */
+.footer{
+    position: absolute;
+}

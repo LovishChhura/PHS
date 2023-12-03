@@ -1,0 +1,13 @@
+.sbtn{
+    align-items: center;
+}
+
+.eye_img{
+    width: 370px;
+}
+
+@media only screen and (min-width: 900px) {
+    .eye_img {
+      width: 650px;
+    }
+  }

@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}PHS Yoga{% endblock title %}
+
+{% block body %}
+
+    <!-- PHS Exercises starts here -->
+    <section class=" services-section head">
+        <div class="container text-center common-title fw-bold pt-2">
+            <h2 class="common-heading">PHS Yoga Asanas- {{name}}</h2>
+            <hr class="w-25 mx-auto ">
+        </div>
+
+
+
+    </section>
+    <!-- PHS Exercises end here -->
+
+    <!--Beginner Level section section starts here-->
+
+    <section class=" services-section beginnery">
+        <div class="container text-center common-title fw-bold pt-2">
+            <h4 class="common-heading">Beginner Level</h4>
+            <hr class="w-25 mx-auto ">
+        </div>
+
+        <div class="container mt-5">
+            <div class="row mt-0 mb-5 pt-2 pb-5 gy-3">
+                {% for i in beginners %}
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="{{i.link}}" style="text-decoration:none" target="_blank">
+                        <div class="card text-center cardy" style="width: 18rem;">
+                            <img src="{{i.image}}" class="card-img-top" alt="..." height = '150px' width = "150px">
+                            <div class="card-body">
+                                <!-- <h5 class="card-title">Card title</h5> -->
+                                <p class="card-title  mb-3 ">{{i.name}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+
+
+
+    </section>
+    <!-- Beginner Level ends here -->
+
+    <!--Intermediate Level section starts here-->
+
+    <section class=" services-section intermediatey">
+        <div class="container text-center common-title fw-bold pt-2">
+            <h4 class="common-heading">Intermediate Level</h4>
+            <hr class="w-25 mx-auto ">
+        </div>
+
+        <div class="container mt-5">
+            <div class="row mt-0 mb-5 pt-2 pb-5 gy-3">
+                {% for i in intermediate %}
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="{{i.link}}" style="text-decoration:none" target="_blank">
+                        <div class="card text-center white_cardy" style="width: 18rem;">
+                            <img src="{{i.image}}" class="card-img-top" alt="..." height = '150px' width = "150px">
+                            <div class="card-body">
+                                <!-- <h5 class="card-title">Card title</h5> -->
+                                <p class="card-title  mb-3 ">{{i.name}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+
+
+
+    </section>
+    <!-- Advanced Level Section ends here -->
+
+    <!--Intermediate Level section section starts here-->
+
+    <section class=" services-section y_advancey">
+        <div class="container text-center common-title fw-bold pt-2">
+            <h4 class="common-heading">Advanced Level</h4>
+            <hr class="w-25 mx-auto ">
+        </div>
+
+        <div class="container mt-5">
+            <div class="row mt-0 mb-5 pt-2 pb-5 gy-3">
+                {% for i in advance %}
+                <div class="col-12 col-md-6 col-lg-3">
+                    <a href="{{i.link}}" style="text-decoration:none" target="_blank">
+                        <div class="card text-center cardy" style="width: 18rem;">
+                            <img src="{{i.image}}" class="card-img-top" alt="..." height = '150px' width = "150px">
+                            <div class="card-body">
+                                <!-- <h5 class="card-title">Card title</h5> -->
+                                <p class="card-title  mb-3 ">{{i.name}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+    </section>
+    <!-- Beginner Level ends here -->
+    
+    {% endblock body %}
