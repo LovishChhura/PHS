@@ -39,11 +39,11 @@ eg. >`pip install Django`
  Note: Get keys from above link and add to views.py of health_guidelines App
 
 ### Run Project
-Step-1 Goto folder which contain manage.py.
-Step-2 Open VS Code in that folder.
-Step-3 Open new terminal.
-Step-4 Write `python manage.py runserver` and press enter.
-Step-5 Open that link (e.g. *http://127.0.0.1:8000/*) in browser.
+- Step-1 Goto folder which contain manage.py.
+- Step-2 Open VS Code in that folder.
+- Step-3 Open new terminal.
+- Step-4 Write `python manage.py runserver` and press enter.
+- Step-5 Open that link (e.g. *http://127.0.0.1:8000/*) in browser.
 
 ### Author or Project Owner
 > *Mr. Lovish Chhura*
